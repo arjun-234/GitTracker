@@ -7,13 +7,15 @@ app = Flask(__name__)
 def index():
 	return "Hello From FLask"
 
-@app.route('/git_update', methods=['POST'])
-def git_update():
-    repo = git.Repo('./')
-    origin = repo.remotes.origin
-    repo.create_head('main',origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
-    origin.pull()
-    return '', 200
+@app.route('/update_server', methods=['POST'])
+def webhook():
+    if request.method == 'POST':
+        repo = git.Repo('./')
+        origin = repo.remotes.origin
+        origin.pull()
+        return 'Updated PythonAnywhere successfully', 200
+     else:
+        return 'Wrong event type', 400
 
 if __name__ == "__main__":
 	app.run()
