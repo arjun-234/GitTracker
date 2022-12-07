@@ -12,7 +12,7 @@ def webhook():
 	print("line no:12")
 	if request.method == 'POST':
 		print("line no:14")
-		repo = git.Repo('./')
+		repo = git.Repo('./GitTracker')
 		print("line no:16")
 		origin = repo.remotes.origin
 		origin.pull()
