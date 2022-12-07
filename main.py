@@ -7,10 +7,10 @@ app = Flask(__name__)
 def index():
 	return "Hello From FLask"
 
-@app.route('/update_server', methods=['POST','GET'])
+@app.route('/update_server', methods=['POST'])
 def webhook():
 	print("line no:12")
-	if request.method == 'POST' or request.method == 'GET':
+	if request.method == 'POST':
 		print("line no:14")
 		repo = git.Repo('./')
 		print("line no:16")
