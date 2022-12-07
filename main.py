@@ -7,18 +7,14 @@ app = Flask(__name__)
 def index():
 	return "Hello From FLask"
 
-@app.route('/update_server', methods=['POST'])
+@app.route('/update_server')
 def webhook():
-	print("line no:12")
-	if request.method == 'POST':
-		print("line no:14")
+	try:
 		repo = git.Repo('./')
-		print("line no:16")
 		origin = repo.remotes.origin
 		origin.pull()
-		print("line no:19")
 		return 'Updated PythonAnywhere successfully', 200
-	else:
+	except:
 		print("line no:20")
 		return 'Wrong event type', 400
 
