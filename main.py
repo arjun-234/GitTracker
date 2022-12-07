@@ -9,7 +9,7 @@ def index():
 
 @app.route('/git_update', methods=['POST'])
 def git_update():
-    repo = git.Repo('./')
+    repo = git.Repo('./GitTracker')
     origin = repo.remotes.origin
     repo.create_head('main',origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
     origin.pull()
