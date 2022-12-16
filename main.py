@@ -20,13 +20,13 @@ def webhook():
 		repo = git.Repo('./GitTracker/')
 		origin = repo.remotes.origin
 		origin.pull()
-		response = requests.post(
-		f'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{host}/reload/',
-		headers={'Authorization': f'Token {token}'})
-		if response.status_code == 200:
-			return 'Updated PythonAnywhere successfully', 200
-		else:
-			return 'Got unexpected status code {}: {!r}'.format(response.status_code, response.content)
+		# response = requests.post(
+		# f'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{host}/reload/',
+		# headers={'Authorization': f'Token {token}'})
+		# if response.status_code == 200:
+		return 'Updated PythonAnywhere successfully', 200
+		# else:
+		# 	return 'Got unexpected status code {}: {!r}'.format(response.status_code, response.content)
 	else:
 		return 'Wrong event type', 400
 
