@@ -1,6 +1,15 @@
 from flask import Flask,request
 import git 
 import os
+import requests
+
+
+username = 'arjun23'
+token = '89c97a4b1c2a411708c49137804bb3c364d5a97c'
+host = 'arjun23.pythonanywhere.com'
+
+
+
 
 app = Flask(__name__)
 
@@ -14,7 +23,13 @@ def webhook():
 		repo = git.Repo('./GitTracker/')
 		origin = repo.remotes.origin
 		origin.pull()
-		return 'Updated PythonAnywhere successfully', 200
+		response = requests.get(
+			'https://{host}/api/v0/user/{username}/cpu/'.format(host=host, username=username),
+			headers={'Authorization': 'Token {token}'.format(token=token)})
+		if response.status_code == 200:
+			return 'Updated PythonAnywhere successfully', 200
+		else:
+			return 'Got unexpected status code {}: {!r}'.format(response.status_code, response.content)
 	else:
 		return 'Wrong event type', 400
 
