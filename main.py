@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return "Hello From FLask krupesh"
+	return "Hello From FLask gautam"
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
