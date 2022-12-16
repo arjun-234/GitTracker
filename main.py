@@ -20,9 +20,9 @@ def webhook():
 		repo = git.Repo('./GitTracker/')
 		origin = repo.remotes.origin
 		origin.pull()
-		response = requests.get(
-			'https://{host}/api/v0/user/{username}/cpu/'.format(host=host, username=username),
-			headers={'Authorization': 'Token {token}'.format(token=token)})
+		response = requests.post(
+		'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/reload/'.format(username=username, domain_name=domain_name),
+		headers={'Authorization': 'Token {token}'.format(token=api_token)})
 		if response.status_code == 200:
 			return 'Updated PythonAnywhere successfully', 200
 		else:
