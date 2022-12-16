@@ -1,5 +1,6 @@
 from flask import Flask,request
 import git 
+import os
 
 app = Flask(__name__)
 
@@ -18,4 +19,4 @@ def webhook():
 		return 'Wrong event type', 400
 
 if __name__ == "__main__":
-	app.run()
+	app.run(port=os.environ.get("PORT"))
