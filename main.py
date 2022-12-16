@@ -22,7 +22,7 @@ def webhook():
 		origin.pull()
 		response = requests.post(
 		'https://www.pythonanywhere.com/api/v0/user/{username}/webapps/{domain_name}/reload/'.format(username=username, domain_name=domain_name),
-		headers={'Authorization': 'Token {token}'.format(token=api_token)})
+		headers={'Authorization': 'Token {token}'.format(token=token)})
 		if response.status_code == 200:
 			return 'Updated PythonAnywhere successfully', 200
 		else:
