@@ -8,14 +8,11 @@ username = 'arjun23'
 token = '89c97a4b1c2a411708c49137804bb3c364d5a97c'
 host = 'arjun23.pythonanywhere.com'
 
-
-
-
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return "Hello From FLask-Manohar"
+	return "Hello From FLask-Mannu"
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
