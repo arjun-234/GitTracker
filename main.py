@@ -5,12 +5,12 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-	return "Hello From CI/CD"
+	return "Hello From FLask"
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
 	if request.method == 'POST':
-		repo = git.Repo('/')
+		repo = git.Repo('./GitTracker/')
 		origin = repo.remotes.origin
 		origin.pull()
 		return 'Updated PythonAnywhere successfully', 200
